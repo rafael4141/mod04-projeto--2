@@ -7,8 +7,7 @@ export default function Card(props) {
   const watched = async (event) => {
     if (event.target.checked) {
       await axios.patch(`/user/addList/${props.id}`, {
-        body: {id: props.id},
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}`, },
       }).then((response) => alert("movie marked as watched successfully"))
     } else {
       await axios.patch(`/user/addList/${props.id}`, {
