@@ -29,11 +29,10 @@ export default function Card(props) {
       <div className="card-body">
         <h5 className="card-title">Title:</h5>
         <p className="card-text">{props.title}</p>
-        <h5 className="card-title">
-          Genres: {props.genres.map((item) => {
-              return <span className="badge bg-primary">{item}{" "}</span>;
-            })}
-        </h5>
+        <h5 className="card-title">Genres:</h5>
+        {props.genres.map((item) => {
+          return <span className="badge bg-primary">{item} </span>;
+        })}
         <h5 className="card-title">
           Watched: <input onChange={watched} type="checkbox" />{" "}
         </h5>

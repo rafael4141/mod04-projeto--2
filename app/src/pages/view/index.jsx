@@ -57,12 +57,10 @@ export default function View() {
             <div className="card-body">
               <h5 className="card-title">Title:</h5>
               <p className="card-text">{title}</p>
-              <h5 className="card-title">
-                Genres:
-                {genres.map((item) => {
-                  return <span className="badge bg-primary">{item}</span>;
-                })}
-              </h5>
+              <h5 className="card-title">Genres:</h5>
+              {genres.map((item) => {
+                return <span className="badge bg-primary">{item}</span>;
+              })}
               <h5 className="card-title">Resume:</h5>
               <p className="card-text">{resume}</p>
               <h5 className="card-title">Year:</h5>
