@@ -33,6 +33,10 @@ export default function Header() {
                 <a className="nav-link" href="#" onClick={logout}>
                   Logout
                 </a>
+              </li><li className="nav-item">
+                <a className="nav-link" href="/profile">
+                  Profile
+                </a>
               </li>
             </ul>
           </div>
