@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Card from "../../components/structure/Card";
+import PageInitial from "../PageInitial";
 
 export default function Profile() {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState("");
+  if (!localStorage.getItem("token")) {
+    return <PageInitial />;
+  }
   const getUser = async () => {
     const user = await axios.get("/auth/profile", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

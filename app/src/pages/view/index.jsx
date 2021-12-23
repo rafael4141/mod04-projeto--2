@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import PageInitial from "../PageInitial"
 
 export default function View() {
   const id = useParams().id;
@@ -10,6 +11,7 @@ export default function View() {
   const [resume, setResume] = useState("");
   const [year, setYear] = useState("");
   const [cast, setCast] = useState([]);
+  
   const watched = async (event) => {
     if (event.target.checked) {
       await axios
@@ -47,6 +49,10 @@ export default function View() {
       setCast(movie.cast);
     });
   }, []);
+
+  if (!localStorage.getItem("token")) {
+    return <PageInitial />;
+  }
 
   return (
     <>

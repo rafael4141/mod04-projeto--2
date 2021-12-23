@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Header() {
   const logout = () => {
-    localStorage.removeItem("token")
-  }
+    localStorage.removeItem("token");
+  };
   return (
     <header>
       <nav className="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
@@ -33,9 +33,15 @@ export default function Header() {
                 <a className="nav-link" href="#" onClick={logout}>
                   Logout
                 </a>
-              </li><li className="nav-item">
+              </li>
+              <li className="nav-item">
                 <a className="nav-link" href="/profile">
                   Profile
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/login">
+                  Login
                 </a>
               </li>
             </ul>
