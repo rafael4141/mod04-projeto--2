@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Card from "../../components/structure/Card";
 
 export default function Profile() {
   const [movies, setMovies] = useState([]);
@@ -11,8 +12,11 @@ export default function Profile() {
     setUser(user.data);
   };
   const getMoviesWatched = async () => {
-
-  }
+    const movies = await axios.get("/user/seeList", {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+    setMovies(movies.data);
+  };
   if (user == []) {
     getUser();
     getMoviesWatched();
@@ -22,6 +26,18 @@ export default function Profile() {
       <main>
         <h1>Hello {user.name}</h1>
         <h2>Movies Watched:</h2>
+        <div className="cards">
+          {movies.map((film) => {
+            return (
+              <Card
+                id={film.id}
+                title={film.title}
+                cover={film.cover}
+                genres={film.genres}
+              />
+            );
+          })}
+        </div>
       </main>
     </>
   );

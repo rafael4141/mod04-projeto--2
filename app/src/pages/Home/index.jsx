@@ -10,7 +10,11 @@ export default function Home() {
     console.log(movies.data);
     setMovies(movies.data);
   };
-  getMovies();
+
+  if (movies.length === 0) {
+    getMovies();
+  }
+  
   return (
     <>
       <main className="container-fluid">
