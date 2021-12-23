@@ -1,8 +1,9 @@
 import React from "react";
-import "./style.css";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Register() {
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { name, email, birthdate, password, passwordConfirmation, imageUrl } =
@@ -14,18 +15,13 @@ export default function Register() {
       password: password.value,
       passwordConfirmation: passwordConfirmation.value,
       imageUrl: imageUrl.value,
-    }
-
+    };
     if (password.value !== passwordConfirmation.value) {
       alert("As senhas não são iguais.");
     } else {
-      await axios.post("user/create", data)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      await axios.post("user/create", data).then(() => {
+        navigate("/login");
+      });
     }
   };
 
@@ -33,7 +29,7 @@ export default function Register() {
     <>
       <main className="container-fluid">
         <h1>Register</h1>
-        <form onSubmit={handleSubmit} id="form">
+        <form onSubmit={handleSubmit} className="form">
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name:
