@@ -4,9 +4,10 @@ import "./style.css";
 import axios from "axios";
 
 export default function Card(props) {
-  const a = async (event) => {
+  const watched = async (event) => {
     if (event.target.checked) {
       await axios.patch(`/user/addList/${props.id}`, {
+        body: {id: props.id},
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       }).then((response) => alert("movie marked as watched successfully"))
     } else {
@@ -28,7 +29,7 @@ export default function Card(props) {
           <span className="badge bg-primary">{props.genres[1]}</span>
         </h5>
         <h5 className="card-title">
-          Watched: <input onChange={a} type="checkbox" />{" "}
+          Watched: <input onChange={watched} type="checkbox" />{" "}
         </h5>
       </div>
     </div>
